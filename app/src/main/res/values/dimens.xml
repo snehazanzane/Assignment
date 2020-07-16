@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="list_image_size">100dp</dimen>
+    <dimen name="size_close_button">60dp</dimen>
+    <dimen name="size_image_details">200dp</dimen>
+</resources>
