@@ -1,8 +1,10 @@
-package com.assignment.CountryDetails;
+package com.assignment.CountryDetails.UI.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.assignment.CountryDetails.R;
 
 public class MainActivity extends AppCompatActivity {
 
