@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Country Details</string>
+    <string name="str_next_arrow_desc">Go to next view</string>
+    <string name="str_list_image_desc">list image description</string>
+    <string name="str_fragment_details">Details</string>
+    <string name="str_fragment_close_desc">Fragment close description</string>
+    <string name="str_fragment_image_desc">image description</string>
 </resources>
