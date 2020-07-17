@@ -5,10 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-
 import com.assignment.CountryDetails.data.models.CountryDetailsRow;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Dao
@@ -16,7 +13,6 @@ public interface CountryDao {
 
     @Query("SELECT * FROM CountryDetailsRow ORDER BY id DESC")
     List<CountryDetailsRow> getAllRec();
-
 
     @Query("SELECT * FROM CountryDetailsRow ORDER BY id ASC")
     LiveData<List<CountryDetailsRow>> getAll();
@@ -26,7 +22,6 @@ public interface CountryDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     long[] insertAll(List<CountryDetailsRow> array);
-
 
     @Query("DELETE FROM CountryDetailsRow")
     int deleteAllRows();

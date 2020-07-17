@@ -1,7 +1,6 @@
 package com.assignment.CountryDetails.UI.fragment;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -26,7 +25,7 @@ import com.assignment.CountryDetails.data.LivedataDB.MainViewModel;
 import com.assignment.CountryDetails.data.adapter.CountryDetailsAdapter;
 import com.assignment.CountryDetails.data.models.CountryDetailsRow;
 import com.assignment.CountryDetails.data.models.CountrySingleton;
-import com.assignment.CountryDetails.network.NetworkUtility;
+import com.assignment.CountryDetails.utilsFiles.NetworkUtility;
 import com.assignment.CountryDetails.utilsFiles.SharedPref;
 
 import java.util.ArrayList;
@@ -35,14 +34,10 @@ import java.util.List;
 public class ListFragment extends Fragment {
 
     View view;
-
     ListView listView;
     SwipeRefreshLayout mSwipeRefreshLayout;
-
     MainViewModel mainViewModel;
-
     CountryDetailsAdapter mCountryDetailsAdapter;
-
     CountryDatabase mCountryDatabase;
 
     boolean dualPane;
@@ -59,9 +54,9 @@ public class ListFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_list, container, false);
 
         init();
-/**
- * Binding Data to list view online/offline
- */
+        /**
+         * Binding Data to list view online/offline
+         */
         if (NetworkUtility.isConnected(getActivity())) {
             getCountryDetailsData();
         } else {
@@ -86,7 +81,7 @@ public class ListFragment extends Fragment {
 
         // Check to see if we have a frame in which to embed the details
         // fragment directly in the containing UI.
-        View detailsFrame = getActivity().findViewById(R.id.details);
+        View detailsFrame = getActivity().findViewById(R.id.details_MainActivity);
         dualPane = detailsFrame != null && detailsFrame.getVisibility() == View.VISIBLE;
 
         if (savedInstanceState != null) {
@@ -155,6 +150,9 @@ public class ListFragment extends Fragment {
 
     }
 
+    /**
+     * Setting dat when Internet connection is not available
+     */
     private void selLocalOfflineDatabase() {
         ((MainActivity) getActivity())
                 .setActionbarTitle(SharedPref.getInstance(getActivity()).getSharedPref(getString(R.string.key_heading)));
@@ -175,7 +173,7 @@ public class ListFragment extends Fragment {
 
             // Check what fragment is currently shown, replace if needed.
             DetailsFragment details = (DetailsFragment)
-                    getActivity().getSupportFragmentManager().findFragmentById(R.id.details);
+                    getActivity().getSupportFragmentManager().findFragmentById(R.id.details_MainActivity);
             if (details == null || details.getShownIndex() != index) {
                 // Make new fragment to show this selection.
                 details = DetailsFragment.newInstance(index, mCountryDetailsAdapter.getItem(index));
@@ -184,7 +182,7 @@ public class ListFragment extends Fragment {
                 // with this one inside the frame.
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 if (index == 0) {
-                    ft.replace(R.id.details, details);
+                    ft.replace(R.id.details_MainActivity, details);
                 } else {
                     ft.replace(R.id.a_item, details);
                 }

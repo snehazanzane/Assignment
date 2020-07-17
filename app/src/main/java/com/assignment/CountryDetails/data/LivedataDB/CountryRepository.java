@@ -23,10 +23,20 @@ class CountryRepository {
     private MutableLiveData<List<CountryDetailsRow>> mutableLiveData = new MutableLiveData<>();
     private Application application;
 
+    /**
+     * Constructor
+     *
+     * @param application
+     */
     public CountryRepository(Application application) {
         this.application = application;
     }
 
+    /**
+     * MutableLiveData
+     *
+     * @return MutableLiveData list
+     */
     public MutableLiveData<List<CountryDetailsRow>> getMutableLiveData() {
         RestApiService apiService = RetrofitInstance.getApiService();
         Call<CountryDetailsResponseMainModel> call = apiService.getCountryDetailsData();
@@ -34,14 +44,13 @@ class CountryRepository {
             @Override
             public void onResponse(Call<CountryDetailsResponseMainModel> call, Response<CountryDetailsResponseMainModel> response) {
                 CountryDetailsResponseMainModel mCountryDetailsResponseMainModel = response.body();
-
                 CountrySingleton.getInstance().setHeading(mCountryDetailsResponseMainModel.getTitle().toString());
-
                 if (mCountryDetailsResponseMainModel != null && mCountryDetailsResponseMainModel.getRows() != null) {
                     arrayDetailsList = (ArrayList<CountryDetailsRow>) mCountryDetailsResponseMainModel.getRows();
                     mutableLiveData.setValue(arrayDetailsList);
                 }
             }
+
             @Override
             public void onFailure(Call<CountryDetailsResponseMainModel> call, Throwable t) {
                 t.printStackTrace();

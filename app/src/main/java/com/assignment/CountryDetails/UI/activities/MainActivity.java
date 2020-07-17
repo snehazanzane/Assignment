@@ -1,11 +1,7 @@
 package com.assignment.CountryDetails.UI.activities;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -27,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    /**
+     * Setting Actionbar/toolbar title
+     *
+     * @param title
+     */
     public void setActionbarTitle(String title) {
         getSupportActionBar().setTitle(title);
     }

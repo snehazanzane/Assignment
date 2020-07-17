@@ -4,14 +4,14 @@ import java.security.PublicKey;
 
 public class CountrySingleton {
 
-    private String Heading="";
+    private String Heading = "";
 
-    public static final CountrySingleton INSTANCE=new CountrySingleton();
+    public static final CountrySingleton INSTANCE = new CountrySingleton();
 
     private CountrySingleton() {
     }
 
-    public static CountrySingleton getInstance(){
+    public static CountrySingleton getInstance() {
         return INSTANCE;
     }
 

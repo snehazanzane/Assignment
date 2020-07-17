@@ -12,12 +12,18 @@ import com.assignment.CountryDetails.data.models.CountryDetailsRow;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainViewModel  extends AndroidViewModel {
+public class MainViewModel extends AndroidViewModel {
     private CountryRepository countryRepository;
+
     public MainViewModel(@NonNull Application application) {
         super(application);
         countryRepository = new CountryRepository(application);
     }
+
+    /**
+     * getAll
+     * @return Live data array
+     */
     public LiveData<List<CountryDetailsRow>> getAll() {
         return countryRepository.getMutableLiveData();
     }

@@ -11,7 +11,6 @@ import com.assignment.CountryDetails.data.models.CountryDetailsRow;
 @Database(entities = {CountryDetailsRow.class}, version = 1, exportSchema = false)
 public abstract class CountryDatabase  extends RoomDatabase {
     private static CountryDatabase INSTANCE;
-
     /**
      * Gets app database.
      *

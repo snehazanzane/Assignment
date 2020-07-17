@@ -22,19 +22,13 @@ public class CountryDetailsAdapter extends ArrayAdapter<CountryDetailsRow> {
     Context context;
 
     public CountryDetailsAdapter(Context context, List<CountryDetailsRow> arrayCountryDetails) {
-
         super(context, 0, arrayCountryDetails);
         this.context = context;
         this.arrayCountryDetails = arrayCountryDetails;
     }
 
     public void setArrayCountryDetails(List<CountryDetailsRow> arrayCountryDetails) {
-        this.arrayCountryDetails.addAll( arrayCountryDetails);
-        notifyDataSetChanged();
-    }
-
-    public void removeAll(){
-        arrayCountryDetails.clear();
+        this.arrayCountryDetails.addAll(arrayCountryDetails);
         notifyDataSetChanged();
     }
 
@@ -51,31 +45,27 @@ public class CountryDetailsAdapter extends ArrayAdapter<CountryDetailsRow> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.view_list_item, parent, false);
         }
-
+        //View In initialization
         TextView textTitle = (TextView) convertView.findViewById(R.id.textTitle_ListViewItem);
         TextView textDescription = (TextView) convertView.findViewById(R.id.textDescription_ListViewItem);
         ImageView imageViewDetails = (ImageView) convertView.findViewById(R.id.imageDescription_ListViewItem);
 
+        //Null value check
         if (object.getTitle() == null) {
             textTitle.setText(context.getString(R.string.hint_no_data));
         } else {
             textTitle.setText(object.getTitle());
         }
-
         if (object.getDescription() == null) {
             textDescription.setText(context.getString(R.string.hint_no_data));
         } else {
             textDescription.setText(object.getDescription());
         }
-
         Picasso.get()
                 .load(object.getImageHref())
                 .placeholder(R.drawable.icon_default_image)
                 .into(imageViewDetails);
-
         // Return the completed view to render on screen
         return convertView;
     }
-
-
 }

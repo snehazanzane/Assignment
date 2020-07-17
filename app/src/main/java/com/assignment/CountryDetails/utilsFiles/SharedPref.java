@@ -1,4 +1,5 @@
 package com.assignment.CountryDetails.utilsFiles;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -97,5 +98,5 @@ public class SharedPref {
         SharedPreferences pref = context.getSharedPreferences(assignmentSharePrefKey, Context.MODE_PRIVATE);
         return pref.getString(key, "");
     }
-    
+
 }
