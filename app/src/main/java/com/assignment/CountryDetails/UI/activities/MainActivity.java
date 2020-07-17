@@ -15,6 +15,7 @@ import com.assignment.CountryDetails.data.db.MainViewModel;
 import com.assignment.CountryDetails.data.models.CountryDetailsRow;
 import com.assignment.CountryDetails.data.models.CountrySingleton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
         listView=findViewById(R.id.listview_MainActivity);
         mSwipeRefreshLayout=findViewById(R.id.swipeRefreshLayout_MainActivity);
+
+        mCountryDetailsAdapter =new CountryDetailsAdapter(getApplicationContext(), new ArrayList<>());
+        listView.setAdapter(mCountryDetailsAdapter);
     }
 
     public void getCountryDetailsData() {
@@ -69,8 +73,7 @@ public class MainActivity extends AppCompatActivity {
     private void prepareListViewData(List<CountryDetailsRow> countryDetailsList) {
 
         if(countryDetailsList != null) {
-            mCountryDetailsAdapter =new CountryDetailsAdapter(getApplicationContext(), countryDetailsList);
-            listView.setAdapter(mCountryDetailsAdapter);
+            mCountryDetailsAdapter.setArrayCountryDetails(countryDetailsList);
         }
         mCountryDetailsAdapter.notifyDataSetChanged();
 

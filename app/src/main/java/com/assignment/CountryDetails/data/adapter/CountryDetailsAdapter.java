@@ -27,7 +27,7 @@ public class CountryDetailsAdapter extends ArrayAdapter<CountryDetailsRow> {
     }
 
     public void setArrayCountryDetails(List<CountryDetailsRow> arrayCountryDetails) {
-        this.arrayCountryDetails = arrayCountryDetails;
+        this.arrayCountryDetails.addAll( arrayCountryDetails);
         notifyDataSetChanged();
     }
 
