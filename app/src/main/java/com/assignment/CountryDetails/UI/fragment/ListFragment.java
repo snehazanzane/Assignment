@@ -1,6 +1,7 @@
 package com.assignment.CountryDetails.UI.fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -26,6 +27,7 @@ import com.assignment.CountryDetails.data.adapter.CountryDetailsAdapter;
 import com.assignment.CountryDetails.data.models.CountryDetailsRow;
 import com.assignment.CountryDetails.data.models.CountrySingleton;
 import com.assignment.CountryDetails.network.NetworkUtility;
+import com.assignment.CountryDetails.utilsFiles.SharedPref;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -132,6 +134,7 @@ public class ListFragment extends Fragment {
                 mSwipeRefreshLayout.setRefreshing(false);
                 ((MainActivity) getActivity())
                         .setActionbarTitle(CountrySingleton.getInstance().getHeading());
+                SharedPref.getInstance(getActivity()).saveStringToSharedPref(getString(R.string.key_heading), CountrySingleton.getInstance().getHeading());
                 //Setting data to the listview
                 prepareListViewData(list);
             }
@@ -153,6 +156,9 @@ public class ListFragment extends Fragment {
     }
 
     private void selLocalOfflineDatabase() {
+        ((MainActivity) getActivity())
+                .setActionbarTitle(SharedPref.getInstance(getActivity()).getSharedPref(getString(R.string.key_heading)));
+        CountrySingleton.getInstance().setHeading(SharedPref.getInstance(getActivity()).getSharedPref(getString(R.string.key_heading)));
         ArrayList<CountryDetailsRow> arr = new ArrayList<>();
         arr = (ArrayList<CountryDetailsRow>) mCountryDatabase.countryDao().getAllRec();
         mCountryDetailsAdapter.setArrayCountryDetails(arr);
@@ -172,7 +178,7 @@ public class ListFragment extends Fragment {
                     getActivity().getSupportFragmentManager().findFragmentById(R.id.details);
             if (details == null || details.getShownIndex() != index) {
                 // Make new fragment to show this selection.
-                details = DetailsFragment.newInstance(index,mCountryDetailsAdapter.getItem(index));
+                details = DetailsFragment.newInstance(index, mCountryDetailsAdapter.getItem(index));
 
                 // Execute a transaction, replacing any existing fragment
                 // with this one inside the frame.
