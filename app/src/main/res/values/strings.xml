@@ -6,4 +6,7 @@
     <string name="str_fragment_close_desc">Fragment close description</string>
     <string name="str_fragment_image_desc">image description</string>
     <string name="hint_no_data">No data</string>
+    <string name="msg_No_internet_connection">Internet connection is not availble!! \n Please check...</string>
+    <string name="str_OK">OK</string>
+    <string name="str_no_more_data_availble">No more data available !!!</string>
 </resources>
