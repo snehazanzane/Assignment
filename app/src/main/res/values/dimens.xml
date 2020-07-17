@@ -3,5 +3,6 @@
     <dimen name="list_image_height_size">80dp</dimen>
     <dimen name="list_image_width_size">100dp</dimen>
     <dimen name="size_close_button">60dp</dimen>
-    <dimen name="size_image_details">200dp</dimen>
+    <dimen name="size_image_details_height">160dp</dimen>
+    <dimen name="size_image_details_width">200dp</dimen>
 </resources>
