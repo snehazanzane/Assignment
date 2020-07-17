@@ -82,8 +82,6 @@ public class ListFragment extends Fragment {
             }
         });
 
-
-        /////////////////////////////////
         // Check to see if we have a frame in which to embed the details
         // fragment directly in the containing UI.
         View detailsFrame = getActivity().findViewById(R.id.details);
@@ -182,7 +180,7 @@ public class ListFragment extends Fragment {
                 if (index == 0) {
                     ft.replace(R.id.details, details);
                 } else {
-                    ft.replace(R.id.details, details);
+                    ft.replace(R.id.a_item, details);
                 }
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
                 ft.commit();

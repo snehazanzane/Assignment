@@ -14,8 +14,6 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_details);
-
 
         if (getResources().getConfiguration().orientation
                 == Configuration.ORIENTATION_LANDSCAPE) {
@@ -27,6 +25,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             // During initial setup, plug in the details fragment.
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             DetailsFragment details = new DetailsFragment();
             details.setArguments(getIntent().getExtras());
             getSupportFragmentManager().beginTransaction().add(android.R.id.content, details).commit();
