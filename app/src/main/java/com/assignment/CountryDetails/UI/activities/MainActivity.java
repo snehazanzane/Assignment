@@ -43,11 +43,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initViews();
 
-        /**
-         * Binding Data to list view online/offline
+
+
+
+
+
+        /*initViews();
+
+
          */
+/**
+ * Binding Data to list view online/offline
+ *//*
+
         if (NetworkUtility.isConnected(MainActivity.this)) {
             getCountryDetailsData();
         } else {
@@ -55,9 +64,11 @@ public class MainActivity extends AppCompatActivity {
             selLocalOfflineDatabase();
         }
 
-        /***
-         * Pull to refresh country listview
-         */
+        */
+/***
+ * Pull to refresh country listview
+ *//*
+
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -116,15 +127,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setActionbarTitle(String title) {
-        getSupportActionBar().setTitle(title);
-    }
-
     private void selLocalOfflineDatabase() {
         ArrayList<CountryDetailsRow> arr = new ArrayList<>();
         arr = (ArrayList<CountryDetailsRow>) mCountryDatabase.countryDao().getAllRec();
         mCountryDetailsAdapter.setArrayCountryDetails(arr);
         mCountryDetailsAdapter.notifyDataSetChanged();
+    }
+*/
+
+
+    }
+
+
+
+    public void setActionbarTitle(String title) {
+        getSupportActionBar().setTitle(title);
     }
 
     @Override
@@ -164,5 +181,5 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    
+
 }
