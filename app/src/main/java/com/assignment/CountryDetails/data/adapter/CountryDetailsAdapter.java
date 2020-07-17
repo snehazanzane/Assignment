@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.assignment.CountryDetails.R;
 import com.assignment.CountryDetails.data.models.CountryDetailsRow;
 import com.squareup.picasso.Picasso;
@@ -29,6 +31,16 @@ public class CountryDetailsAdapter extends ArrayAdapter<CountryDetailsRow> {
     public void setArrayCountryDetails(List<CountryDetailsRow> arrayCountryDetails) {
         this.arrayCountryDetails.addAll( arrayCountryDetails);
         notifyDataSetChanged();
+    }
+
+    public void removeAll(){
+        arrayCountryDetails.clear();
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public void remove(@Nullable CountryDetailsRow object) {
+        super.remove(object);
     }
 
     @Override

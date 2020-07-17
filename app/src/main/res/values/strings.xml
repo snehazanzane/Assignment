@@ -9,4 +9,9 @@
     <string name="msg_No_internet_connection">Internet connection is not availble!! \n Please check...</string>
     <string name="str_OK">OK</string>
     <string name="str_no_more_data_availble">No more data available !!!</string>
+    <string name="str_delete_all_users">Delete all</string>
+    <string name="str_cancel">Cancel</string>
+    <string name="msg_delete_record_confirmation">Are you sure you want to delete all the data</string>
+    <string name="str_yes">Yes</string>
+    <string name="str_no">No</string>
 </resources>

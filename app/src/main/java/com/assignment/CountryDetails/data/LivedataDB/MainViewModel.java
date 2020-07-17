@@ -1,4 +1,4 @@
-package com.assignment.CountryDetails.data.db;
+package com.assignment.CountryDetails.data.LivedataDB;
 
 import android.app.Application;
 
@@ -6,8 +6,10 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.assignment.CountryDetails.data.DB.CountryDatabase;
 import com.assignment.CountryDetails.data.models.CountryDetailsRow;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainViewModel  extends AndroidViewModel {

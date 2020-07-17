@@ -1,24 +1,37 @@
 package com.assignment.CountryDetails.data.models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "CountryDetailsRow")
 public class CountryDetailsRow {
-    /*
-    {
-	"title":"Beavers",
-	"description":"Beavers are second only to humans in their ability to manipulate and change their environment. They can measure up to 1.3 metres long. A group of beavers is called a colony",
-	"imageHref":"http://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/American_Beaver.jpg/220px-American_Beaver.jpg"
-	}
-     */
 
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
+    int id;
+
+    @ColumnInfo(name = "title")
     @SerializedName("title")
-    private String title="";
+    private String title = "";
 
+    @ColumnInfo(name = "description")
     @SerializedName("description")
-    private String description="";
+    private String description = "";
 
+    @ColumnInfo(name = "imageHref")
     @SerializedName("imageHref")
-    private String imageHref="";
+    private String imageHref = "";
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
 
     public String getTitle() {
         return title;
