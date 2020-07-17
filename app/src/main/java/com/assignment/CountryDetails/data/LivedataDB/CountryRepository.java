@@ -1,9 +1,10 @@
-package com.assignment.CountryDetails.data.db;
+package com.assignment.CountryDetails.data.LivedataDB;
 
 import android.app.Application;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.assignment.CountryDetails.data.DB.CountryDatabase;
 import com.assignment.CountryDetails.data.models.CountryDetailsResponseMainModel;
 import com.assignment.CountryDetails.data.models.CountryDetailsRow;
 import com.assignment.CountryDetails.data.models.CountrySingleton;
