@@ -26,4 +26,8 @@ public interface CountryDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     long[] insertAll(List<CountryDetailsRow> array);
+
+
+    @Query("DELETE FROM CountryDetailsRow")
+    int deleteAllRows();
 }
