@@ -5,4 +5,5 @@
     <string name="str_fragment_details">Details</string>
     <string name="str_fragment_close_desc">Fragment close description</string>
     <string name="str_fragment_image_desc">image description</string>
+    <string name="hint_no_data">No data</string>
 </resources>

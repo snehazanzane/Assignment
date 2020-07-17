@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textTitle_MainActivity"
+        android:id="@+id/textTitle_ListViewItem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -15,52 +15,52 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="dfsfdsf sneha zanzane yedi aahe murkh aahe kotiln murkh aahe bavalat aahe"
+        android:text="@string/hint_no_data"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/colorTextViewBlue"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imageNext_MainActivity"
+        app:layout_constraintEnd_toStartOf="@+id/imageNext_ListViewItem"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageNext_MainActivity"
+        android:id="@+id/imageNext_ListViewItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:contentDescription="@string/str_next_arrow_desc"
+        android:src="@drawable/ic_next_arrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_next_arrow"
-        android:contentDescription="@string/str_next_arrow_desc"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
-        android:id="@+id/textDescription_MainActivity"
+        android:id="@+id/textDescription_ListViewItem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="TextView maria maria mariay monalisa mikina milan ritika muuuu latika munna raho kiaytdtv bbbba dfhgdhghg gfhdfghdhgf hgdfghduf"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_marginBottom="8dp"
+        android:text="@string/hint_no_data"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="@android:color/black"
-        app:layout_constraintEnd_toStartOf="@+id/imageDescription_MainActivity"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageDescription_ListViewItem"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitle_MainActivity" />
+        app:layout_constraintTop_toBottomOf="@+id/textTitle_ListViewItem" />
 
     <ImageView
-        android:id="@+id/imageDescription_MainActivity"
-        android:layout_width="@dimen/list_image_size"
-        android:layout_height="@dimen/list_image_size"
+        android:id="@+id/imageDescription_ListViewItem"
+        android:layout_width="@dimen/list_image_width_size"
+        android:layout_height="@dimen/list_image_height_size"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:scaleType="centerInside"
-        app:layout_constraintEnd_toStartOf="@+id/imageNext_MainActivity"
-        app:layout_constraintTop_toBottomOf="@+id/textTitle_MainActivity"
-        app:srcCompat="@drawable/icon_default_image"
-        android:contentDescription="@string/str_list_image_desc"/>
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/str_list_image_desc"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageNext_ListViewItem"
+        app:layout_constraintTop_toBottomOf="@+id/textTitle_ListViewItem"
+        app:srcCompat="@drawable/icon_default_image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
