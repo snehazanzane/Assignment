@@ -6,7 +6,6 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.assignment.CountryDetails.R;
 import com.assignment.CountryDetails.UI.fragment.DetailsFragment;
 
 public class DetailsActivity extends AppCompatActivity {

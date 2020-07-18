@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <fragment
-        android:id="@+id/titles"
+        android:id="@+id/titles_MainActivity"
         class="com.assignment.CountryDetails.UI.fragment.ListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

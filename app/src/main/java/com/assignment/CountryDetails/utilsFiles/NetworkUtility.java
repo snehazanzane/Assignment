@@ -1,4 +1,4 @@
-package com.assignment.CountryDetails.network;
+package com.assignment.CountryDetails.utilsFiles;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;

@@ -5,4 +5,5 @@
     <dimen name="size_close_button">60dp</dimen>
     <dimen name="size_image_details_height">160dp</dimen>
     <dimen name="size_image_details_width">200dp</dimen>
+    <dimen name="margin_low">8dp</dimen>
 </resources>

@@ -69,6 +69,9 @@ public class DetailsFragment extends Fragment {
         image = view.findViewById(R.id.image_DetailsFragment);
     }
 
+    /**
+     * Setting data to view
+     */
     private void setData() {
         obj = getShownObject();
         textHeading.setText(obj.getTitle());
