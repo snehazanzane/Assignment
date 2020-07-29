@@ -21,6 +21,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        initViews();
+    }
+
+    private void initViews() {
+        mCountryDatabase = CountryDatabase.getAppDatabase(MainActivity.this);
     }
 
     /**
