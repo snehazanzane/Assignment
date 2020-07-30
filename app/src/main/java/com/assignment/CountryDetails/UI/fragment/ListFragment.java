@@ -63,6 +63,7 @@ public class ListFragment extends Fragment {
         if (NetworkUtility.isConnected(getActivity())) {
             getCountryDetailsData();
         } else {
+            mSwipeRefreshLayout.setRefreshing(false);
             NetworkUtility.showAlert(getActivity());
             selLocalOfflineDatabase();
         }
@@ -76,6 +77,7 @@ public class ListFragment extends Fragment {
                 if (NetworkUtility.isConnected(getActivity())) {
                     getCountryDetailsData();
                 } else {
+                    mSwipeRefreshLayout.setRefreshing(false);
                     NetworkUtility.showAlert(getActivity());
                     selLocalOfflineDatabase();
                 }
@@ -166,6 +168,7 @@ public class ListFragment extends Fragment {
      * Setting dat when Internet connection is not available
      */
     private void selLocalOfflineDatabase() {
+        mSwipeRefreshLayout.setRefreshing(false);
         ((MainActivity) getActivity())
                 .setActionbarTitle(SharedPref.getInstance(getActivity()).getSharedPref(getString(R.string.key_heading)));
         CountrySingleton.getInstance().setHeading(SharedPref.getInstance(getActivity()).getSharedPref(getString(R.string.key_heading)));
