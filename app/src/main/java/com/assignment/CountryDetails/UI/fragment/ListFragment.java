@@ -3,6 +3,7 @@ package com.assignment.CountryDetails.UI.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -43,6 +44,8 @@ public class ListFragment extends Fragment {
     boolean dualPane;
     int curCheckPosition = 0;
 
+    int page=1;
+
     public ListFragment() {
         // Required empty public constructor
     }
@@ -60,18 +63,25 @@ public class ListFragment extends Fragment {
         if (NetworkUtility.isConnected(getActivity())) {
             getCountryDetailsData();
         } else {
+            mSwipeRefreshLayout.setRefreshing(false);
             NetworkUtility.showAlert(getActivity());
             selLocalOfflineDatabase();
         }
 
         /***
-         * Pull to refresh country listview
+         * Pull to refresh country list
          */
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 if (NetworkUtility.isConnected(getActivity())) {
-                    getCountryDetailsData();
+                    if (page>1){
+                        mSwipeRefreshLayout.setRefreshing(false);
+                        Toast.makeText(getActivity(), ""+getString(R.string.msg_no_more_Data_available), Toast.LENGTH_SHORT).show();
+                    }else {
+                        getCountryDetailsData();
+                    }
+
                 } else {
                     NetworkUtility.showAlert(getActivity());
                     selLocalOfflineDatabase();
@@ -84,21 +94,30 @@ public class ListFragment extends Fragment {
         View detailsFrame = getActivity().findViewById(R.id.details_MainActivity);
         dualPane = detailsFrame != null && detailsFrame.getVisibility() == View.VISIBLE;
 
+        //dualPane = true;
+
         if (savedInstanceState != null) {
             // Restore last state for checked position.
             curCheckPosition = savedInstanceState.getInt("curChoice", 0);
         }
 
         if (dualPane) {
-            // In dual-pane mode, the list view highlights the selected item.
+            // In dual-pane mode, the list view highlights the selected
+            // item.
             listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
             // Make sure our UI is in the correct state.
             showDetails(curCheckPosition);
+        } else {
+            // We also highlight in uni-pane just for fun
+            listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+            listView.setItemChecked(curCheckPosition, true);
         }
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 showDetails(position);
             }
         });
@@ -126,6 +145,7 @@ public class ListFragment extends Fragment {
             @Override
             public void onChanged(@Nullable List<CountryDetailsRow> list) {
                 //complete the pull to refresh functionality
+                page++;
                 mSwipeRefreshLayout.setRefreshing(false);
                 ((MainActivity) getActivity())
                         .setActionbarTitle(CountrySingleton.getInstance().getHeading());
@@ -154,6 +174,7 @@ public class ListFragment extends Fragment {
      * Setting dat when Internet connection is not available
      */
     private void selLocalOfflineDatabase() {
+        mSwipeRefreshLayout.setRefreshing(false);
         ((MainActivity) getActivity())
                 .setActionbarTitle(SharedPref.getInstance(getActivity()).getSharedPref(getString(R.string.key_heading)));
         CountrySingleton.getInstance().setHeading(SharedPref.getInstance(getActivity()).getSharedPref(getString(R.string.key_heading)));
@@ -200,4 +221,11 @@ public class ListFragment extends Fragment {
             startActivity(intent);
         }
     }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("curChoice", curCheckPosition);
+    }
+
 }

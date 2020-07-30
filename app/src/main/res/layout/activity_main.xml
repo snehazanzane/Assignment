@@ -7,7 +7,9 @@
 
     <fragment
         android:id="@+id/titles_MainActivity"
-        class="com.assignment.CountryDetails.UI.fragment.ListFragment"
+        android:name="com.assignment.CountryDetails.UI.fragment.ListFragment"
+        tools:layout="@layout/fragment_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" >
+    </fragment>
 </FrameLayout>
