@@ -44,7 +44,7 @@ public class ListFragment extends Fragment {
     boolean dualPane;
     int curCheckPosition = 0;
 
-//    OnCountryListSelectedListener mCountrySelectedListener;
+    int page=1;
 
     public ListFragment() {
         // Required empty public constructor
@@ -75,9 +75,14 @@ public class ListFragment extends Fragment {
             @Override
             public void onRefresh() {
                 if (NetworkUtility.isConnected(getActivity())) {
-                    getCountryDetailsData();
+                    if (page>1){
+                        mSwipeRefreshLayout.setRefreshing(false);
+                        Toast.makeText(getActivity(), ""+getString(R.string.msg_no_more_Data_available), Toast.LENGTH_SHORT).show();
+                    }else {
+                        getCountryDetailsData();
+                    }
+
                 } else {
-                    mSwipeRefreshLayout.setRefreshing(false);
                     NetworkUtility.showAlert(getActivity());
                     selLocalOfflineDatabase();
                 }
@@ -140,6 +145,7 @@ public class ListFragment extends Fragment {
             @Override
             public void onChanged(@Nullable List<CountryDetailsRow> list) {
                 //complete the pull to refresh functionality
+                page++;
                 mSwipeRefreshLayout.setRefreshing(false);
                 ((MainActivity) getActivity())
                         .setActionbarTitle(CountrySingleton.getInstance().getHeading());
