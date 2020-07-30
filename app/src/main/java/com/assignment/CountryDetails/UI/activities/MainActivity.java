@@ -21,7 +21,7 @@ import com.assignment.CountryDetails.data.models.CountryDetailsRow;
 
 public class MainActivity extends AppCompatActivity {
 
-    CountryDatabase mCountryDatabase;
+    public CountryDatabase mCountryDatabase;
 
     public boolean isDualPane = false;
 
