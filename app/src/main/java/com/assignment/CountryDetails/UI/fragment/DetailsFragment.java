@@ -2,8 +2,11 @@ package com.assignment.CountryDetails.UI.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.assignment.CountryDetails.R;
@@ -63,7 +67,7 @@ public class DetailsFragment extends Fragment {
         return view;
     }
 
-    private void init() {
+    public void init() {
         textHeading = view.findViewById(R.id.textTitle_DetailsFragment);
         textDetails = view.findViewById(R.id.textDescription_DetailsFragment);
         image = view.findViewById(R.id.image_DetailsFragment);
@@ -72,7 +76,7 @@ public class DetailsFragment extends Fragment {
     /**
      * Setting data to view
      */
-    private void setData() {
+    public void setData() {
         obj = getShownObject();
         textHeading.setText(obj.getTitle());
         textDetails.setText(obj.getDescription());

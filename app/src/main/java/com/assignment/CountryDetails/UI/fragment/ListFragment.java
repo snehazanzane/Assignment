@@ -3,6 +3,7 @@ package com.assignment.CountryDetails.UI.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -43,6 +44,8 @@ public class ListFragment extends Fragment {
     boolean dualPane;
     int curCheckPosition = 0;
 
+//    OnCountryListSelectedListener mCountrySelectedListener;
+
     public ListFragment() {
         // Required empty public constructor
     }
@@ -65,7 +68,7 @@ public class ListFragment extends Fragment {
         }
 
         /***
-         * Pull to refresh country listview
+         * Pull to refresh country list
          */
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -84,21 +87,30 @@ public class ListFragment extends Fragment {
         View detailsFrame = getActivity().findViewById(R.id.details_MainActivity);
         dualPane = detailsFrame != null && detailsFrame.getVisibility() == View.VISIBLE;
 
+        //dualPane = true;
+
         if (savedInstanceState != null) {
             // Restore last state for checked position.
             curCheckPosition = savedInstanceState.getInt("curChoice", 0);
         }
 
         if (dualPane) {
-            // In dual-pane mode, the list view highlights the selected item.
+            // In dual-pane mode, the list view highlights the selected
+            // item.
             listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
             // Make sure our UI is in the correct state.
             showDetails(curCheckPosition);
+        } else {
+            // We also highlight in uni-pane just for fun
+            listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+            listView.setItemChecked(curCheckPosition, true);
         }
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 showDetails(position);
             }
         });
@@ -200,4 +212,11 @@ public class ListFragment extends Fragment {
             startActivity(intent);
         }
     }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("curChoice", curCheckPosition);
+    }
+
 }

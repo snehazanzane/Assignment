@@ -2,20 +2,28 @@ package com.assignment.CountryDetails.UI.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 import com.assignment.CountryDetails.R;
+import com.assignment.CountryDetails.UI.fragment.DetailsFragment;
+import com.assignment.CountryDetails.UI.fragment.ListFragment;
 import com.assignment.CountryDetails.data.DB.CountryDatabase;
+import com.assignment.CountryDetails.data.models.CountryDetailsRow;
 
 public class MainActivity extends AppCompatActivity {
 
     CountryDatabase mCountryDatabase;
+
+    public boolean isDualPane = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         initViews();
     }
+
 
     private void initViews() {
         mCountryDatabase = CountryDatabase.getAppDatabase(MainActivity.this);
@@ -74,4 +83,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
